@@ -388,7 +388,7 @@
 		<type>jar</type>
 		<scope>compile</scope>
 	</dependency>
-  	
+<!--    	
 	<dependency>
 		<groupId>net.digitalprimates</groupId>
 		<artifactId>dpHibernate</artifactId>
@@ -396,7 +396,7 @@
 		<type>jar</type>
 		<scope>compile</scope>
 	</dependency>
-
+-->
 	<dependency>
 		<groupId>com.eaio.uuid</groupId>
 		<artifactId>uuid</artifactId>
