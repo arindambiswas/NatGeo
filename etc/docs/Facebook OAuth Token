@@ -1,0 +1,31 @@
+Need  the ability to perform an offline access to a list of users feed and store the same onto the database / filesystem
+
+1. First time user
+
+
+User comes in to the app. The app checks whether an access token exists for the particular user. If YES, the access token needs to be verified whether its still valid (change password / offline access enabled).
+If NO, or a NEW USER the application needs to redirect the user to a page where the permission for offline access + add application + OAuth access_token generation can be sought and stored.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. How to find out whether the person is logged into facebook (trailer mode)
+2. If yes, find out whether he has added the application

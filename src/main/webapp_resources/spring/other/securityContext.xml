@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       	http://www.springframework.org/schema/flex 
+		http://www.springframework.org/schema/flex/spring-flex-1.0.xsd
+       	http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       	http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd
+       	http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+<!--	
+	<security:http auto-config="true"
+		session-fixation-protection="none">
+		<security:intercept-url pattern="/GuiRig.html"
+			filters="none" />
+	</security:http>
+	<security:authentication-provider
+		user-service-ref="authenticationService">
+		<security:password-encoder ref="passwordEncoder">
+			<security:salt-source user-property="id" />
+		</security:password-encoder>
+	</security:authentication-provider>
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.providers.encoding.ShaPasswordEncoder" />
+	<bean id="saltSource"
+		class="org.springframework.security.providers.dao.salt.ReflectionSaltSource">
+		<property name="userPropertyToUse" value="id" />
+	</bean>
+	<bean id="authenticationService" class="com.mangofactory.pepper.service.AuthenticationService" />
+-->
+</beans>

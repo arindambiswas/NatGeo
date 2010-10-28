@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/flex 
+		http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="@@@main_package@@@" />
+
+	<context:property-placeholder location="classpath:jdbc/target-postgres.properties"/>
+
+	<import resource="flex-config.xml" />
+	<import resource="dataAccess-config.xml" />
+<!--	
+	<import resource="dpHibernate-config.xml" />
+-->
+<!--
+	<import resource="flexContext.xml" />
+	<import resource="dataAccess-config.xml" />
+	<import resource="securityContext.xml" />
+	<import resource="dpHibernateContext.xml" />
+-->
+
+	<!-- Implementation of ProductDAO using low-level JDBC 
+	<bean id="productService" class="org.springframework.flex.samples.product.ProductDAO">
+		<constructor-arg ref="dataSource" />
+	</bean>
+-->
+	<!-- Implementation of ContactDAO using Spring's JdbcTemplate 
+	<bean id="contactService" class="org.springframework.flex.samples.contact.ContactDAO">
+		<constructor-arg ref="dataSource" />
+	</bean>
+-->
+	<!-- A secured implementation of ProductDAO 
+	<bean id="securedProductService" class="org.springframework.flex.samples.product.ProductDAO">
+		<constructor-arg ref="dataSource" />
+		<security:intercept-methods>
+			<security:protect method="find*" access="ROLE_USER" />
+		</security:intercept-methods>
+	</bean>
+-->
+</beans>

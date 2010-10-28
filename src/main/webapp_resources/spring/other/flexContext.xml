@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/flex 	
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	
+	<flex:message-broker services-config-path="/WEB-INF/flex/services-config.xml">
+		<flex:remoting-service default-adapter-id="dpHibernateRemotingAdapter"
+			default-channels="my-amf,my-secure-amf" />
+		<flex:message-service default-adapter-id="dpHibernateMessagingAdapter"
+			default-channels="my-polling-amf,secure-polling-amf" />
+		<flex:secured />
+	</flex:message-broker>
+	<bean id="defaultMessageTemplate" class="org.springframework.flex.messaging.MessageTemplate" />
+
+	<bean id="helloWorldService" class="com.collectivezen.fbtestbed.remote.HelloWorldService">
+		<flex:remoting-destination />
+	</bean>	
+	<bean id="memberService" class="com.collectivezen.fbtestbed.service.MemberService">
+		<flex:remoting-destination />
+	</bean>	
+
+<!--
+	<bean id="dpHibernateService" class="com.collectivezen.fbtestbed.remote.HibernateService">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<flex:remoting-destination service-adapter="hibernate-lazy-adapter"/>
+	</bean>
+-->
+<!--
+	<bean id="pepperService" class="com.mangofactory.pepper.service.PepperService" autowire="constructor" />
+-->
+</beans>

@@ -1,0 +1,149 @@
+<project name="CollectiveZen - fbtestbed" 
+	xmlns:artifact="antlib:org.apache.maven.artifact.ant"
+	default="all">
+   
+	<property file="user.properties"/>
+	<property file="build.properties"/>
+
+	<property name="src.dir" value="${basedir}/src/main/java"/>
+	<property name="res.dir" value="${basedir}/src/main/resources"/>
+	<property name="webapp.dir" value="${basedir}/src/main/webapp"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="template.dir" value="${build.dir}/templates"/>
+	<property name="hb.output.dir" value="${src.dir}/${hb_output_dir}"/>
+	<property name="antlib.dir" value="${basedir}/build/lib"/>
+	
+	<!-- pathref to custom ant libraries -->
+	<path id="antlib.path">
+		<fileset dir="${antlib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	 <typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+	 	uri="antlib:org.apache.maven.artifact.ant"
+	 	classpathref="antlib.path" />
+	
+	<artifact:dependencies pathId="dependency.classpath">
+		<pom file="pom.xml"/>
+	</artifact:dependencies>
+
+	<taskdef name="hibernatetool" 
+		classname="org.hibernate.tool.ant.HibernateToolTask" 
+		classpath="${toString:dependency.classpath}" />
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+	  <classpath>
+	    <pathelement location="${antlib.dir}/ant-contrib-1.0b3.jar"/>
+	  </classpath>
+	</taskdef>		
+
+	<target name="generate-domain" depends="replace-props">
+
+      <delete dir="${hb.output.dir}" />
+      <mkdir dir="${hb.output.dir}" />
+      <hibernatetool destdir="${src.dir}">
+         <jdbcconfiguration 
+            packagename="${reveng_package_name}"
+            revengfile="${res.dir}/hibernate/hibernate.reveng.xml"  
+            detectmanytomany="true"               
+            propertyfile="${res.dir}/hibernate/hibernate.properties"/> 
+                  
+         <hbmtemplate
+         	templatepath="pojo/"
+            template="pojo/Pojo.ftl"
+            filepattern="{package-name}/{class-name}.java"
+            exporterclass="org.hibernate.tool.hbm2x.POJOExporter">
+
+         	<property key="jdk5" value="true" />
+         	<property key="ejb3" value="true" />
+			
+         </hbmtemplate>
+      </hibernatetool>
+
+<!--
+		<echo message="Making changes to HB POJOS in : ${hb.output.dir}"></echo>
+		<replace dir="${hb.output.dir}" 
+			value="extends net.digitalprimates.persistence.hibernate.proxy.HibernateProxy implements" 
+			summary="true">
+			
+			<include name="**/*.java"/>
+			<replacetoken><![CDATA[implements]]></replacetoken>
+		</replace>
+-->
+		
+<!--
+		<replace dir="${hb.output.dir}" summary="true">
+			<include name="**/*.java"/>
+			<replacetoken><![CDATA[(fetch=FetchType.LAZY)]]></replacetoken>
+		</replace>
+
+		<replace dir="${hb.output.dir}" summary="true">
+			<include name="**/*.java"/>
+			<replacetoken><![CDATA[, fetch=FetchType.LAZY]]></replacetoken>
+		</replace>
+		
+		<replace dir="${hb.output.dir}" summary="true">
+			<include name="**/*.java"/>
+			<replacetoken><![CDATA[cascade=CascadeType.ALL, ]]></replacetoken>
+		</replace>	
+
+		<replace dir="${hb.output.dir}" summary="true" value="name=&quot;generator&quot;, allocationSize=1, ">
+			<include name="**/*.java"/>
+			<replacetoken><![CDATA[name="generator", ]]></replacetoken>
+		</replace>	
+-->
+   </target>
+
+	<target name="replace-props" depends="add_templates">
+		<echo message="Replacing properties using file - ${file_name}"/>
+		
+		<copy todir="build/templates/generated" overwrite="true">
+    		<fileset dir="build/templates/source"/>
+  		</copy>
+		
+		<echo message="Using ${replacefilterfile} to replace tokens ..." />
+		<replace dir="build/templates/generated" 
+			replacefilterfile="${replacefilterfile}"
+			summary="on">
+
+			<include name="**/*.*"/>
+
+		</replace>
+
+		<copy todir="${basedir}" overwrite="true">
+    		<fileset dir="build/templates/generated"/>
+  		</copy>
+
+		<delete dir="${template.dir}/generated" />
+	</target>
+	
+	<target name="add_templates">
+		<copy todir="build/templates/generated">
+    		<fileset dir="build/templates/source"/>
+  		</copy>
+	</target>
+
+	<target name="generate-reveng">
+<!--
+		<javac srcdir="${src.dir}" destdir="${build.dir}/bin" 
+	    	includes="com/collectivezen/util/HibernateRevengGenerator.java" debug="on">
+	    </javac>
+-->
+		<java classname="com.collectivezen.util.HibernateRevengGenerator" fork="true">
+			<arg value="${reveng_db_connection_url}" />
+			<arg value="${reveng_db_username}" />
+			<arg value="${reveng_db_password}" />
+			<arg value="${reveng_package_name}" />
+			<arg value="${res.dir}/hibernate/hibernate.reveng.xml" />
+			<classpath>
+				<pathelement location="${build.dir}/bin" />
+				<path refid="antlib.path" />
+			</classpath>
+		</java>
+	</target>
+	
+	<target name="all" depends="generate-reveng, generate-domain">
+	</target>
+
+</project>

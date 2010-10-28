@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="message-service" 
+    class="flex.messaging.services.MessageService">
+
+    <default-channels>
+        <channel ref="my-polling-amf"/>
+    </default-channels>
+
+</service>

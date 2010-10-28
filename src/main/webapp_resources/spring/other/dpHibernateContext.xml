@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:flex="http://www.springframework.org/schema/flex" 
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/flex 
+		http://www.springframework.org/schema/flex/spring-flex-1.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd		
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		">
+	<!-- Defines the remoting adapter, which intercepts inbound & outbound messages, and routes them thruogh dpHibernate -->
+	<bean id="dpHibernateRemotingAdapter"
+		class="org.springframework.flex.core.ManageableComponentFactoryBean">
+		<constructor-arg
+			value="org.dphibernate.adapters.RemotingAdapter" />
+		<property name="properties">
+		<!--  Note: If you want to customize the names of the methods called for load / save operations, you can do so here.
+		As a child of the dpHibnerate element, add:
+		"loadMethod" : "myCustomizedLoadMethodName",
+		"saveMethod" : "myCustomizedLoadMethodName" 
+		
+		Note that loadMethod should have the signature:
+		public Object myCustomizedLoadMethodName(Class daoClass, Serializable id)
+		
+		saveMethod should have the signatures:
+		public Set<ObjectChangeResult> saveBean(ObjectChangeMessage objectChangeMessage);
+		public Set<ObjectChangeResult> saveBean(List<ObjectChangeMessage> objectChangeMessage)
+		-->
+			<value>
+				{"dpHibernate" :
+					{
+						"serializerFactory" : "org.dphibernate.serialization.SpringContextSerializerFactory"
+					}
+				}
+        </value>
+		</property>
+	</bean>
+	<bean id="dpHibernateMessagingAdapter"
+		class="org.springframework.flex.core.ManageableComponentFactoryBean">
+		<constructor-arg
+			value="org.dphibernate.adapters.MessagingAdapter" />
+	</bean>
+	
+	<!-- Provides a basic dataAccessService for CRUD operations through dpHibernate.
+	It's also exported as a remoting destination, which makes it accessible to flex clients
+	 -->
+	<bean id="dataAccessService" class="org.dphibernate.services.SpringDataAccessService" 
+		autowire="constructor">
+		<flex:remoting-destination />
+	</bean>
+	<!-- ProxyBatchLoader enabled batched loading of objects.  A single request is sent for many objects,
+	rather than several individual requests.  This is optional, but provides significant performance improvements -->
+	<bean id="proxyBatchLoader" class="org.dphibernate.services.ProxyBatchLoader" 
+		autowire="constructor" />
+	
+	<!-- Required -->
+	<bean id="hibernateSessionFilter" class="org.dphibernate.filters.SpringHibernateSessionServletFilter" />
+	
+	<!-- The cache is used to prevent serializing the same object many times during serialization.  Required -->
+	<bean id="dpHibernateCache"
+		class="org.dphibernate.serialization.DPHibernateCache" scope="prototype" />
+	
+	<!-- The main serializer. Converts outbound POJO's to ASObjects with dpHibernate proxies for lazy loading.  Required -->
+	<bean id="dpHibernateSerializer"
+		class="org.dphibernate.serialization.HibernateSerializer" scope="prototype">
+			<property name="pageSize" value="10"/>
+	</bean>
+	<bean id="dpHibernateDeserializer" class="org.dphibernate.serialization.HibernateDeserializer" scope="prototype" />
+	<!--  Handles entity updates (CRUD).  Required if using entity persistence. -->
+	<bean id="objectChangeUpdater"
+		class="org.dphibernate.persistence.state.AuthenticatedObjectChangeUpdater"
+		scope="prototype">
+		<property name="preProcessors" ref="dpHibernatePreProcessors" />
+		<property name="postProcessors" ref="dpHibernatePostProcessors" />
+	</bean>
+	
+	<!--  Used in update process, for resolving proxies back to the entity -->
+	<bean id="hibernateProxyResolver" class="org.dphibernate.persistence.state.DbProxyResolver"
+		scope="prototype">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+	
+	<!--  Optional.  Pre processors are invoked before an update operation.  
+					Must implement IChangeMessageInterceptor 
+	<util:list id="dpHibernatePreProcessors">
+		<ref bean="uniqueUsernameInterceptor" />
+	</util:list>
+-->	
+	<!-- Optional.  Post processors are invokes after an update operation.  Must implement IChangeMessageInterceptor 
+	<util:list id="dpHibernatePostProcessors">
+		<ref bean="passwordEncryptionInterceptor" />
+	</util:list>
+-->	
+	<!-- An example of a customized message interceptor.
+		CHecks to see if a username is unique in the database before performing 
+		an Create or Update on the ApplicationUser 
+	<bean id="uniqueUsernameInterceptor" 
+		class="com.mangofactory.pepper.service.interceptors.UsernameExistsChangeMessageInterceptor"
+		autowire="constructor" />
+-->	
+	<!-- Optional.  Encodes passwords that are being written to the database.  Uses the same encoding scheme as wired to 
+	Spring security, to ensure that passwords are encoded such that they can be decoded during login. 
+	If you want to store passwords in plain text, this is not required.
+	See Also: securityContext.xml for Spring security wiring used during logon. 
+	<bean id="passwordEncryptionInterceptor" class="org.dphibernate.persistence.interceptors.PasswordEncryptionInterceptor">
+		<constructor-arg index="0" value="com.mangofactory.pepper.model.ApplicationUser" />
+		<constructor-arg index="1" value="password" />
+		<constructor-arg index="2" ref="passwordEncoder" />
+		<constructor-arg index="3" ref="sessionFactory" />
+	</bean>
+-->	
+</beans>

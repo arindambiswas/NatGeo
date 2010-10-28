@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<type-mapping>
+		<sql-type jdbc-type="INTEGER" hibernate-type="int"/>
+		<sql-type jdbc-type="FLOAT" hibernate-type="float"/>
+		<sql-type jdbc-type="REAL" hibernate-type="float"/>
+		<sql-type jdbc-type="NUMERIC" hibernate-type="long"/>
+		<sql-type jdbc-type="VARCHAR" length="1" hibernate-type="char"/>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"/>
+	</type-mapping>
+
+	<table-filter match-name="enum_gender" match-schema="public" 
+		package="ikriti.natgeo.hb" />
+	<table-filter match-name="enum_member_status" match-schema="public" 
+		package="ikriti.natgeo.hb" />
+	<table-filter match-name="fb_user" match-schema="public" 
+		package="ikriti.natgeo.hb" />
+	<table-filter match-name="ma_participant" match-schema="public" 
+		package="ikriti.natgeo.hb" />
+	<table-filter match-name="member" match-schema="public" 
+		package="ikriti.natgeo.hb" />
+
+	<table schema="public" name="enum_gender" class="ikriti.natgeo.hb.EnumGender">
+		<primary-key>
+			<generator class="sequence"> 
+				<param name="sequence">enum_gender_id_seq</param>
+			</generator>
+			<key-column name="id" property="id" />
+		</primary-key>
+		<column name="gender" property="gender" />
+		<column name="description" property="description" />
+	</table>
+
+	<table schema="public" name="enum_member_status" class="ikriti.natgeo.hb.EnumMemberStatus">
+		<primary-key>
+			<generator class="sequence"> 
+				<param name="sequence">enum_member_status_id_seq</param>
+			</generator>
+			<key-column name="id" property="id" />
+		</primary-key>
+		<column name="status" property="status" />
+		<column name="description" property="description" />
+	</table>
+
+	<table schema="public" name="fb_user" class="ikriti.natgeo.hb.FbUser">
+		<primary-key>
+			<generator class="sequence"> 
+				<param name="sequence">fb_user_id_seq</param>
+			</generator>
+			<key-column name="id" property="id" />
+		</primary-key>
+		<column name="member" property="member" />
+		<column name="photo_url" property="photoUrl" />
+		<column name="create_date" property="createDate" />
+		<column name="access_token" property="accessToken" />
+		<column name="is_valid_access_token" property="isValidAccessToken" />
+		<column name="facebook_id" property="facebookId" />
+	</table>
+
+	<table schema="public" name="ma_participant" class="ikriti.natgeo.hb.MaParticipant">
+		<primary-key>
+			<generator class="sequence"> 
+				<param name="sequence">ma_participant_id_seq</param>
+			</generator>
+			<key-column name="id" property="id" />
+		</primary-key>
+		<column name="member" property="member" />
+		<column name="height" property="height" />
+		<column name="weight" property="weight" />
+		<column name="age" property="age" />
+	</table>
+
+	<table schema="public" name="member" class="ikriti.natgeo.hb.Member">
+		<primary-key>
+			<generator class="sequence"> 
+				<param name="sequence">member_id_seq</param>
+			</generator>
+			<key-column name="id" property="id" />
+		</primary-key>
+		<column name="guid" property="guid" />
+		<column name="firstname" property="firstname" />
+		<column name="lastname" property="lastname" />
+		<column name="dob" property="dob" />
+		<column name="email" property="email" />
+		<column name="mobile" property="mobile" />
+		<column name="gender" property="gender" />
+		<column name="photo_url" property="photoUrl" />
+		<column name="private_key" property="privateKey" />
+		<column name="create_date" property="createDate" />
+		<column name="member_status" property="memberStatus" />
+	</table>
+
+</hibernate-reverse-engineering>

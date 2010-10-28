@@ -1,0 +1,51 @@
+README
+
+
+RestFB
+------------------------------------------------
+
+This project has a dependency on RestFB (http://code.google.com/p/restfb/). 
+Unfortunately this project is not yet mavenized, so you need to follow the
+instructions stated below : 
+
+First download the restfb api and run the following maven command from the extracted dir. 
+
+mvn install:install-file -Dfile=etc/lib/restfb-1.6.jar -DgroupId=com.restfb -DartifactId=restfb -Dversion=1.6 -Dpackaging=jar -DgeneratePom=true
+
+This installs the jar in your local mvn repo, and then add the following dependency to your pom
+
+<dependency>
+  <groupid>com.restfb</groupid>
+  <artifactid>restfb</artifactid>
+  <version>1.6</version>
+</dependency>
+
+NOTE : For the purpose of this example, the same has been included in the etc/lib/java/ folder (restfb-1.6.jar)
+
+
+dpHibernate
+------------------------------------------------
+
+This project has a dependency on dpHibernate (http//code.google.com/p/dphibernate/). 
+Unfortunately this project is not yet mavenized, so you need to follow the
+instructions stated below : 
+
+First download the dpHibernate1.0.17.jar file http://dphibernate.googlecode.com/files/dpHibernate1.0.17.jar 
+
+mvn install:install-file -DgroupId=net.digitalprimates -DartifactId=dpHibernate -Dversion=1.0.17 -Dpackaging=jar -Dfile=etc/lib/java/dpHibernate1.0.17.jar -DgeneratePom=true
+
+This installs the jar in your local mvn repo, and then add the following dependency to your pom
+
+	<dependency>
+		<groupId>net.digitalprimates</groupId>
+		<artifactId>dpHibernate</artifactId>
+		<version>1.0.17</version>
+		<type>jar</type>
+		<scope>compile</scope>
+	</dependency>
+
+NOTE : For the purpose of this example, the same has been included in the etc/lib/java/ folder (dpHibernate1.0.17.jar)
+
+
+
+
