@@ -1,7 +1,9 @@
 package ikriti.natgeo.remote;
 
-import ikriti.natgeo.hb.Member;
 import ikriti.natgeo.service.MemberService;
+import ikriti.natgeo.vo.FbUserVO;
+import ikriti.natgeo.vo.MaParticipantVO;
+import ikriti.natgeo.vo.MemberVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,9 +20,10 @@ public class RemoteMemberService extends BaseService
 		this.memberService = memberService;
 	}
 
-	public Member register()
+	public MemberVO register(MemberVO member)
 	{
 		Search search = new Search();
+		/*
 		Member member = null;
 		try
 		{
@@ -32,6 +35,19 @@ public class RemoteMemberService extends BaseService
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		*/
 		return member;
+	}
+	
+	public MaParticipantVO registerMissionArmyParticipant(MaParticipantVO ma)
+	{
+		Search search = new Search();
+		return ma;
+	}
+	
+	public FbUserVO associateFB(FbUserVO fbuser)
+	{
+		Search search = new Search();
+		return fbuser;
 	}
 }
