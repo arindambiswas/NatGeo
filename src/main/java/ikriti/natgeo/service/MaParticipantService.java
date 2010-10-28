@@ -1,7 +1,7 @@
 package ikriti.natgeo.service;
 
-import ikriti.natgeo.dao.interfaces.MemberDAO;
-import ikriti.natgeo.hb.Member;
+import ikriti.natgeo.dao.interfaces.MaParticipantDAO;
+import ikriti.natgeo.hb.MaParticipant;
 
 import java.util.List;
 
@@ -9,32 +9,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.trg.search.ISearch;
-import com.trg.search.Search;
 import com.trg.search.SearchResult;
 
 @Service
-public class MemberService
+public class MaParticipantService
 {
 
-	MemberDAO dao;
+	MaParticipantDAO dao;
 
 	@Autowired
-	public void setDao(MemberDAO dao)
+	public void setDao(MaParticipantDAO dao)
 	{
 		this.dao = dao;
 	}
 
-	public MemberDAO getDao()
+	public MaParticipantDAO getDao()
 	{
 		return this.dao;
 	}
 
-	public void save(Member member)
+	public void save(MaParticipant maParticipant)
 	{
-		dao.save(member);
+		dao.save(maParticipant);
 	}
 
-	public List<Member> findAll()
+	public List<MaParticipant> findAll()
 	{
 		return dao.findAll();
 	}
@@ -44,25 +43,19 @@ public class MemberService
 		dao.flush();
 	}
 
-	public List<Member> search(ISearch search)
+	public List<MaParticipant> search(ISearch search)
 	{
 		return dao.search(search);
 	}
 
-	public Member searchUnique(ISearch search)
+	public MaParticipant searchUnique(ISearch search)
 	{
 		return dao.searchUnique(search);
 	}
 
-	public Member findById(Long id)
+	public MaParticipant findById(Long id)
 	{
 		return dao.find(id);
-	}
-
-	public Member findByGuid(String guid)
-	{
-		if (guid == null) return null;
-		return dao.searchUnique(new Search().addFilterEqual("guid", guid));
 	}
 
 	public void delete(Long id)
@@ -70,7 +63,7 @@ public class MemberService
 		dao.removeById(id);
 	}
 
-	public SearchResult<Member> searchAndCount(ISearch search)
+	public SearchResult<MaParticipant> searchAndCount(ISearch search)
 	{
 		return dao.searchAndCount(search);
 	}

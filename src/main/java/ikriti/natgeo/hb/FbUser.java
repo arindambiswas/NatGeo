@@ -1,5 +1,5 @@
 package ikriti.natgeo.hb;
-// Generated Oct 28, 2010 2:44:05 AM by Hibernate Tools 3.2.2.GA
+// Generated Oct 29, 2010 12:55:50 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -46,7 +46,7 @@ public class FbUser  implements java.io.Serializable {
        this.facebookId = facebookId;
     }
    
-     @SequenceGenerator(name="generator", sequenceName="fb_user_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
+     @SequenceGenerator(name="generator", allocationSize=1, sequenceName="fb_user_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
     
     @Column(name="id", unique=true, nullable=false)
     public int getId() {

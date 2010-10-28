@@ -1,12 +1,15 @@
 package ikriti.natgeo.hb;
-// Generated Oct 28, 2010 2:44:05 AM by Hibernate Tools 3.2.2.GA
+// Generated Oct 29, 2010 12:55:50 AM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,7 +24,7 @@ public class MaParticipant  implements java.io.Serializable {
 
 
      private int id;
-     private Long member;
+     private Member member;
      private String height;
      private String weight;
      private String age;
@@ -29,14 +32,14 @@ public class MaParticipant  implements java.io.Serializable {
     public MaParticipant() {
     }
 
-    public MaParticipant(Long member, String height, String weight, String age) {
+    public MaParticipant(Member member, String height, String weight, String age) {
        this.member = member;
        this.height = height;
        this.weight = weight;
        this.age = age;
     }
    
-     @SequenceGenerator(name="generator", sequenceName="ma_participant_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
+     @SequenceGenerator(name="generator", allocationSize=1, sequenceName="ma_participant_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
     
     @Column(name="id", unique=true, nullable=false)
     public int getId() {
@@ -46,13 +49,13 @@ public class MaParticipant  implements java.io.Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
-    @Column(name="member")
-    public Long getMember() {
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="member")
+    public Member getMember() {
         return this.member;
     }
     
-    public void setMember(Long member) {
+    public void setMember(Member member) {
         this.member = member;
     }
     

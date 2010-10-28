@@ -1,12 +1,17 @@
 package ikriti.natgeo.hb;
-// Generated Oct 28, 2010 2:44:05 AM by Hibernate Tools 3.2.2.GA
+// Generated Oct 29, 2010 12:55:50 AM by Hibernate Tools 3.2.2.GA
 
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,6 +28,7 @@ public class EnumMemberStatus  implements java.io.Serializable {
      private int id;
      private String status;
      private String description;
+     private Set<Member> members = new HashSet<Member>(0);
 
     public EnumMemberStatus() {
     }
@@ -31,12 +37,13 @@ public class EnumMemberStatus  implements java.io.Serializable {
     public EnumMemberStatus(String status) {
         this.status = status;
     }
-    public EnumMemberStatus(String status, String description) {
+    public EnumMemberStatus(String status, String description, Set<Member> members) {
        this.status = status;
        this.description = description;
+       this.members = members;
     }
    
-     @SequenceGenerator(name="generator", sequenceName="enum_member_status_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
+     @SequenceGenerator(name="generator", allocationSize=1, sequenceName="enum_member_status_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
     
     @Column(name="id", unique=true, nullable=false)
     public int getId() {
@@ -63,6 +70,14 @@ public class EnumMemberStatus  implements java.io.Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="enumMemberStatus")
+    public Set<Member> getMembers() {
+        return this.members;
+    }
+    
+    public void setMembers(Set<Member> members) {
+        this.members = members;
     }
 
 

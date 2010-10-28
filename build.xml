@@ -87,12 +87,12 @@
 			<include name="**/*.java"/>
 			<replacetoken><![CDATA[cascade=CascadeType.ALL, ]]></replacetoken>
 		</replace>	
-
+-->
 		<replace dir="${hb.output.dir}" summary="true" value="name=&quot;generator&quot;, allocationSize=1, ">
 			<include name="**/*.java"/>
 			<replacetoken><![CDATA[name="generator", ]]></replacetoken>
 		</replace>	
--->
+
    </target>
 
 	<target name="replace-props" depends="add_templates">
