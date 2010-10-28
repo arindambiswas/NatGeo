@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+	<token name="wildfireUrl" value="http://cdn.gigya.com/wildfire/swf/wildfireInAS3.swf?ModuleID=gigyaConfig" /> 
+	<token name="userPhoto" value="http://natgeo.ikriti.com/natgeo/assets/defaultUserPhoto.jpg" /> 
+	<token name="username" value="User" /> 
+	<token name="mode" value="blog" /> 
+	<token name="app_canvasPage" value="0" /> 
+	<token name="initFootprints" value="0" /> 
+	<token name="addToOrkutUrl" value="http://sandbox.orkut.com/Main#Application?appId=743537715145" /> 
+	<token name="addToFacebookUrl" value="http://apps.facebook.com/earthhour_ld" /> 
+	<token name="addToProfileMessage" value="Earth Hour 2010" /> 
+	<token name="addToProfileSwfUrl" value="http://localdev.homelinux.com/earthhour/apps/earthhour_manu/container.swf?mode=blog&userId=" /> 
+	<token name="addToProfileImageUrl" value="http://www.limitemagazine.com/wp-content/uploads/2009/01/logo_national_geographic.jpg" /> 
+	<token name="addToProfileActionText" value="Support Earth Hour 2010" /> 
+	<token name="twitterUrl" value="http://localdev.homelinux.com/tweetrproxy/statuses/user_timeline/brajeshwar.rss?count=20" /> 
+	<token name="twitterProxy" value="http://localdev.homelinux.com/tweetrproxy" /> 
+	<token name="twitterUserName" value="brajeshwar" /> 
+	<!--  MessageBody should be of type MemberPledge --> 
+	<member> 
+		<memberId>3</memberId> 
+		<guid>74d7add0-310a-11df-be1a-001485760904</guid> 
+		<name>Manu George</name> 
+		<createDate>2010-03-16 20:14:42.403</createDate> 
+		<photoUrl>null</photoUrl> 
+		<memberPledges>
+		</memberPledges> 
+	</member> 
+	<now>Wed Mar 17 12:01:18 IST 2010</now> 
+	
+	<embedCode>
+	<![CDATA[
+		<object width="460" height="460">
+			<param name="movie" value="http://180.151.0.220/photoContest/apps/flipbook/container.swf"></param>
+			<param name="flashvars" value="configUrl=http://180.151.0.220/photoContest/apps/flipbook/config/config.xml&appUrl=http://180.151.0.220/photoContest/apps/flipbook/photo_contest.swf&mode=blog&userId=|userId|""></param>
+			<embed src="http://180.151.0.220/photoContest/apps/flipbook/container.swf type="application/x-shockwave-flash" width="460" height="460" flashvars="configUrl=http://natgeo.ikriti.com/natgeo/config/config.xml&appUrl=http://natgeo.ikriti.com/natgeo/photo_contest.swf&mode=blog&userId=|userId|"></embed>
+		</object>
+	]]>
+	</embedCode>
+
+	<wildfireConfig>
+	<![CDATA[
+		<config><display showEmail="false" showBookmark="false" showCloseButton="true"></display><body><controls><snbuttons iconsOnly="false"></snbuttons></controls></body></config>
+	]]>
+	</wildfireConfig>
+</config>

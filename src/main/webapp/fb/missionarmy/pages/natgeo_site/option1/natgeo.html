@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<!-- <script type="text/javascript" 
+	src="https://getfirebug.com/firebug-lite.js#startOpened=false">
+</script>
+ -->
+</head>
+<style>
+likeBtn.like span.connect_widget_text {color:#fff;}
+likeBtn.like div.connect_widget_confirmation {color:#fff;}
+likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
+</style>
+
+<body>
+	<div id="fb-root"></div>	
+    <div  class="myapp" style="width:1200px; height:1000px; margin:0 auto; background-image: url(assets/NatGeo---Mission-Army---Webpage.jpg)">
+        <div class="header" style="width:1200px; height:211px; background-image:url(assets/NatGeo_MissionArmy_Webpage_header.jpg)">
+        </div>
+        
+        <div class="main_content" align="center" style="width:1200px; height:830px; background-image:url(assets/main_bg.jpg)">
+           <div class="center_alg" style="width:960px; height:830px;">     
+                <div class="video_text" style="width:960px; height:380px;">
+                    <div id="flashContent" class="video" style="width:500px; background-color:#690; height:340px; float:left; margin:20px 0px 20px 0px;>
+                    	
+                            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="500" height="340" id="missionArmy_webpageVideo" align="middle">
+                                <param name="movie" value="missionArmy_webpageVideo.swf" />
+                                <param name="quality" value="high" />
+                                <param name="bgcolor" value="#ffffff" />
+                                <param name="play" value="true" />
+                                <param name="loop" value="true" />
+                                <param name="wmode" value="transparent" />
+                                <param name="scale" value="showall" />
+                                <param name="menu" value="true" />
+                                <param name="devicefont" value="false" />
+                                <param name="salign" value="" />
+                                <param name="allowScriptAccess" value="sameDomain" />
+                                <!--[if !IE]>-->
+                                <object type="application/x-shockwave-flash" data="missionArmy_webpageVideo.swf" width="500" height="340">
+                                    <param name="movie" value="missionArmy_webpageVideo.swf" />
+                                    <param name="quality" value="high" />
+                                    <param name="bgcolor" value="#ffffff" />
+                                    <param name="play" value="true" />
+                                    <param name="loop" value="true" />
+                                    <param name="wmode" value="transparent" />
+                                    <param name="scale" value="showall" />
+                                    <param name="menu" value="true" />
+                                    <param name="devicefont" value="false" />
+                                    <param name="salign" value="" />
+                                    <param name="allowScriptAccess" value="sameDomain" />
+                                <!--<![endif]-->
+                                    <a href="http://www.adobe.com/go/getflash">
+                                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                                    </a>
+                                <!--[if !IE]>-->
+                                </object>
+                                <!--<![endif]-->
+                            </object>
+                        
+                    </div>
+                    <div class="info" style="width:420px; height:340px; margin:20px 20px 20px 20px; float:left; text-align:justify; text-indent:0px; font-family:Verdana, Geneva, sans-serif; font-size:13px; color:#e2e2ae ">
+                    <div>
+                    <img src="assets/netgeo_missionarmy.png"; style="padding:0px 0px 0px 10px; margin-left:40px;"/>
+                    </div>
+                    <div>
+                    <p>Experience the discipline, drill and military bearing at IMA in Dehradun; get a taste of Commando Training with the dreaded Ledo jump at the Infantry School in Belgaum; check out the counter insurgency operations at the Corps Battle School in Khreu; get a feel of target practice at the Artillery School in Deollali; get an inside look at the flying squadrons in the Combat Aviation Training School, Nashik; train in mine laying and clearance at Signal School, Mhow and dive head long with the Para Jumpers in Agra!</p>
+
+					<p>This is Nat Geo&apos;s biggest television event of the year. Enter Mission Army and live the life of a soldier. Five ordinary Indians will get the chance of a lifetime! And only one person will be a part of the Indian military training team abroad.</p>
+					<p style="font-size:13px";>Do you have it in you?</p>
+                    </div>
+                    </div>
+                </div>
+                	<div class="sign_up" style="width:960px; height:450px;background-image:url(assets/signup_bg.png);background-repeat:no-repeat">
+                		
+                        <div style="width:960px;padding:10px 10px 0px 20px; color:#191B0E; font-family:Verdana, Geneva, sans-serif; font-size:15px; font-weight:bold" align="left">
+                        	To enter Mission Army, sign up here:
+                        </div>
+						<div id="likeBtn" style="width:960px;padding:10px 10px 10px 20px;" TEXT="#FFFFFF" align="left">
+                        	<div id="fb-root"></div>
+                        	<script type="text/javascript" src="swfobject/swfobject.js"></script>
+                        	<script type="text/javascript">
+							window.fbAsyncInit = function() 
+							{
+								FB.init({appId: '153610078014709', status: true, cookie: true, xfbml: true});
+								FB.Event.subscribe('edge.create', function(href, widget)
+																	{
+																 		//console.log('You just liked '+href+widget);
+																 		enableEntryForm();
+																 	});
+							};
+
+							(function() {
+						    	var e = document.createElement('script'); 
+						    	e.async = true;
+						    	e.src = document.location.protocol +
+						      		'//connect.facebook.net/en_US/all.js';
+						    	document.getElementById('fb-root').appendChild(e);
+						  	}());
+						  	
+							function getMovie(movieName)
+							{
+								if(navigator.appName.indexOf("Microsoft") != -1)
+								{
+									return window[movieName];
+								}
+								else
+								{
+									return document[movieName];
+								}
+							}
+							function enableEntryForm()
+							{
+								getMovie("NatGeo_MissionArmy").enableEntryForm();	
+							}
+
+
+
+							var flashvars = {
+		            				 graphAPIUrl: "https://graph.facebook.com/",
+		            				 fbPageId: "154516747908559",
+		            				 fbRedirectUrl: "http://www.apptikka.com/ngc/mission_army/apps/callback.html",
+		            				 fbAppId: "153610078014709",
+		            				 fbSek: "4772b59f4bc07a941cf6b578c475a254"
+									};
+							var params = {
+							    allowScriptAccess: "sameDomain",
+								wmode: "transparent"
+							};
+							
+							var attributes = {
+							    id: "NatGeo_MissionArmy",
+							    name: "NatGeo_MissionArmy"
+							};
+///							flashvars = kalki.mixinQueryParams(flashvars);
+							
+							swfobject.embedSWF(
+								"MA_signup.swf", 
+								"MA_signup", 
+								"940", 
+								"300", 
+								"10.0.0.0",
+								"swfobject/expressInstall.swf",
+								flashvars,
+								params,
+								attributes);
+
+							
+							</script>
+							<fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_10442206389" colorscheme="dark" font="trebuchet ms"></fb:like>
+						</div>
+                		<div id="MA_signup">
+                        </div>
+                  
+                </div>
+                
+           </div>     
+    	</div>	
+    	<div class="footer" style="width:1200px; height:60px; background-image:url(assets/bottom_bg.jpg)">
+        </div>
+    </div>
+</body>
+</html>
