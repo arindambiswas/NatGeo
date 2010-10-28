@@ -1,0 +1,9 @@
+apptikka.com
+-------------------------
+
+Repository checkout location : /home/kalki/repos/github/ikriti/natgeo/missionarmy/NatGeo
+
+Command to pull code : git pull
+
+Command to deploy : ./deploy.sh
+
