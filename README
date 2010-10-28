@@ -10,7 +10,7 @@ instructions stated below :
 
 First download the restfb api and run the following maven command from the extracted dir. 
 
-mvn install:install-file -Dfile=etc/lib/restfb-1.6.jar -DgroupId=com.restfb -DartifactId=restfb -Dversion=1.6 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=etc/lib/java/restfb-1.6.jar -DgroupId=com.restfb -DartifactId=restfb -Dversion=1.6 -Dpackaging=jar -DgeneratePom=true
 
 This installs the jar in your local mvn repo, and then add the following dependency to your pom
 
