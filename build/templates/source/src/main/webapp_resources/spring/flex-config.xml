@@ -15,6 +15,10 @@
 	<bean id="helloWorldService" class="@@@main_package@@@.remote.HelloWorldService">
 		<flex:remoting-destination />
 	</bean>	
+	
+	<bean id="remoteMemberService" class="@@@main_package@@@.remote.RemoteMemberService">
+		<flex:remoting-destination />
+	</bean>	
 
 	<bean id="memberService" class="@@@main_package@@@.service.MemberService">
 		<flex:remoting-destination />
