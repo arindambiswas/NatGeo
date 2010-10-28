@@ -5,6 +5,8 @@ import ikriti.natgeo.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.trg.search.Search;
+
 public class RemoteMemberService extends BaseService
 {
 
@@ -16,10 +18,20 @@ public class RemoteMemberService extends BaseService
 		this.memberService = memberService;
 	}
 
-	public Member register(Member member)
+	public Member register()
 	{
-		member.setId(23);
-		
+		Search search = new Search();
+		Member member = null;
+		try
+		{
+			search.addFilterEqual("id", "-1");
+			member = memberService.searchUnique(search);
+		}
+		catch (Exception e) 
+		{
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return member;
 	}
 }
