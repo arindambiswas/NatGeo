@@ -14,7 +14,7 @@ likeBtn.like div.connect_widget_confirmation {color:#fff;}
 likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
 </style>
 
-<body>
+<body onload="pageInit();">
 	<div id="fb-root"></div>	
     <div  class="myapp" style="width:1200px; height:1000px; margin:0 auto; background-image: url(assets/NatGeo---Mission-Army---Webpage.jpg)">
         <div class="header" style="width:1200px; height:211px; background-image:url(assets/NatGeo_MissionArmy_Webpage_header.jpg)">
@@ -91,10 +91,19 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
 									return document[movieName];
 								}
 							}
+							var jsReady = false;
 							function enableEntryForm()
 							{
-								getMovie("NatGeo_MissionArmy").enableEntryForm();	
+								getMovie("NatGeo_MissionArmy").enableEntryForm();
+									
 							}
+
+							function isReady() {
+						         return jsReady;
+						     }
+						     function pageInit() {
+						         jsReady = true;
+						     }
 
 
 
