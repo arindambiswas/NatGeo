@@ -1,6 +1,8 @@
 package ikriti.natgeo.service;
 
+import ikriti.natgeo.dao.interfaces.FbUserDAO;
 import ikriti.natgeo.dao.interfaces.MemberDAO;
+import ikriti.natgeo.hb.FbUser;
 import ikriti.natgeo.hb.Member;
 
 import java.util.List;
@@ -13,28 +15,28 @@ import com.trg.search.Search;
 import com.trg.search.SearchResult;
 
 @Service
-public class MemberService
+public class FbUserService
 {
 
-	MemberDAO dao;
+	FbUserDAO dao;
 
 	@Autowired
-	public void setDao(MemberDAO dao)
+	public void setDao(FbUserDAO dao)
 	{
 		this.dao = dao;
 	}
 
-	public MemberDAO getDao()
+	public FbUserDAO getDao()
 	{
 		return this.dao;
 	}
 
-	public void save(Member member)
+	public void save(FbUser fbUser)
 	{
-		dao.save(member);
+		dao.save(fbUser);
 	}
 
-	public List<Member> findAll()
+	public List<FbUser> findAll()
 	{
 		return dao.findAll();
 	}
@@ -44,25 +46,19 @@ public class MemberService
 		dao.flush();
 	}
 
-	public List<Member> search(ISearch search)
+	public List<FbUser> search(ISearch search)
 	{
 		return dao.search(search);
 	}
 
-	public Member searchUnique(ISearch search)
+	public FbUser searchUnique(ISearch search)
 	{
 		return dao.searchUnique(search);
 	}
 
-	public Member findById(Long id)
+	public FbUser findById(Long id)
 	{
 		return dao.find(id);
-	}
-
-	public Member findByGuid(String guid)
-	{
-		if (guid == null) return null;
-		return dao.searchUnique(new Search().addFilterEqual("guid", guid));
 	}
 
 	public void delete(Long id)
@@ -70,7 +66,7 @@ public class MemberService
 		dao.removeById(id);
 	}
 
-	public SearchResult<Member> searchAndCount(ISearch search)
+	public SearchResult<FbUser> searchAndCount(ISearch search)
 	{
 		return dao.searchAndCount(search);
 	}

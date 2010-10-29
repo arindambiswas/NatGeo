@@ -1,5 +1,5 @@
 package ikriti.natgeo.hb;
-// Generated Oct 28, 2010 2:44:05 AM by Hibernate Tools 3.2.2.GA
+// Generated Oct 29, 2010 12:55:50 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,38 +31,40 @@ public class Member  implements java.io.Serializable {
 
 
      private int id;
+     private EnumGender enumGender;
+     private EnumMemberStatus enumMemberStatus;
      private String guid;
      private String firstname;
      private String lastname;
      private Date dob;
      private String email;
      private String mobile;
-     private Short gender;
      private String photoUrl;
      private String privateKey;
      private Date createDate;
-     private Short memberStatus;
+     private Set<MaParticipant> maParticipants = new HashSet<MaParticipant>(0);
      private Set<FbUser> fbUsers = new HashSet<FbUser>(0);
 
     public Member() {
     }
 
-    public Member(String guid, String firstname, String lastname, Date dob, String email, String mobile, Short gender, String photoUrl, String privateKey, Date createDate, Short memberStatus, Set<FbUser> fbUsers) {
+    public Member(EnumGender enumGender, EnumMemberStatus enumMemberStatus, String guid, String firstname, String lastname, Date dob, String email, String mobile, String photoUrl, String privateKey, Date createDate, Set<MaParticipant> maParticipants, Set<FbUser> fbUsers) {
+       this.enumGender = enumGender;
+       this.enumMemberStatus = enumMemberStatus;
        this.guid = guid;
        this.firstname = firstname;
        this.lastname = lastname;
        this.dob = dob;
        this.email = email;
        this.mobile = mobile;
-       this.gender = gender;
        this.photoUrl = photoUrl;
        this.privateKey = privateKey;
        this.createDate = createDate;
-       this.memberStatus = memberStatus;
+       this.maParticipants = maParticipants;
        this.fbUsers = fbUsers;
     }
    
-     @SequenceGenerator(name="generator", sequenceName="member_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
+     @SequenceGenerator(name="generator", allocationSize=1, sequenceName="member_id_seq")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
     
     @Column(name="id", unique=true, nullable=false)
     public int getId() {
@@ -69,6 +73,24 @@ public class Member  implements java.io.Serializable {
     
     public void setId(int id) {
         this.id = id;
+    }
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="gender")
+    public EnumGender getEnumGender() {
+        return this.enumGender;
+    }
+    
+    public void setEnumGender(EnumGender enumGender) {
+        this.enumGender = enumGender;
+    }
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="member_status")
+    public EnumMemberStatus getEnumMemberStatus() {
+        return this.enumMemberStatus;
+    }
+    
+    public void setEnumMemberStatus(EnumMemberStatus enumMemberStatus) {
+        this.enumMemberStatus = enumMemberStatus;
     }
     
     @Column(name="guid")
@@ -125,15 +147,6 @@ public class Member  implements java.io.Serializable {
         this.mobile = mobile;
     }
     
-    @Column(name="gender")
-    public Short getGender() {
-        return this.gender;
-    }
-    
-    public void setGender(Short gender) {
-        this.gender = gender;
-    }
-    
     @Column(name="photo_url", length=500)
     public String getPhotoUrl() {
         return this.photoUrl;
@@ -160,14 +173,13 @@ public class Member  implements java.io.Serializable {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-    
-    @Column(name="member_status")
-    public Short getMemberStatus() {
-        return this.memberStatus;
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="member")
+    public Set<MaParticipant> getMaParticipants() {
+        return this.maParticipants;
     }
     
-    public void setMemberStatus(Short memberStatus) {
-        this.memberStatus = memberStatus;
+    public void setMaParticipants(Set<MaParticipant> maParticipants) {
+        this.maParticipants = maParticipants;
     }
 @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="member")
     public Set<FbUser> getFbUsers() {

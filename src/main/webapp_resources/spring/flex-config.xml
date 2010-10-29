@@ -15,6 +15,10 @@
 	<bean id="helloWorldService" class="ikriti.natgeo.remote.HelloWorldService">
 		<flex:remoting-destination />
 	</bean>	
+	
+	<bean id="remoteMemberService" class="ikriti.natgeo.remote.RemoteMemberService">
+		<flex:remoting-destination />
+	</bean>	
 
 	<bean id="memberService" class="ikriti.natgeo.service.MemberService">
 		<flex:remoting-destination />
