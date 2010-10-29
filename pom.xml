@@ -98,8 +98,9 @@
 	   		<version>1.0-beta-1</version>
 	   		<configuration>
 				<url>http://localhost:8080/manager</url>
-	               <server>localhost</server>
+	            <server>localhost</server>
 				<port>8010</port>
+				<path>/</path>
 	       	</configuration>
 	   	</plugin> 		
 
