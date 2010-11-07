@@ -102,7 +102,7 @@ public class RemoteMemberService extends BaseService
 		mapVO.setId(map.getId());
 		
 		String mailBody = "Hi "+ memberVO.getFirstname() +", <br /><br />";
-		mailBody += "Thank you for participating in the Mission Army Contest!<br />";
+		mailBody += "We welcome your participation in the Mission Army Contest!<br />";
 		mailBody += "Thanks, <br />";
 		mailBody += "NatGeo India";
 		
