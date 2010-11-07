@@ -1,5 +1,5 @@
 package ikriti.natgeo.hb;
-// Generated Oct 29, 2010 12:55:50 AM by Hibernate Tools 3.2.2.GA
+// Generated Nov 7, 2010 11:25:27 PM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.HashSet;
