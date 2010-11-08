@@ -40,9 +40,11 @@
 
 	<target name="generate-domain" depends="replace-props">
 
-      <delete dir="${hb.output.dir}" />
-      <mkdir dir="${hb.output.dir}" />
-      <hibernatetool destdir="${src.dir}">
+	      <delete>
+	        <fileset dir="${hb.output.dir}" includes="*.java"/>      	
+	      </delete>	
+		
+		<hibernatetool destdir="${src.dir}">
          <jdbcconfiguration 
             packagename="${reveng_package_name}"
             revengfile="${res.dir}/hibernate/hibernate.reveng.xml"  

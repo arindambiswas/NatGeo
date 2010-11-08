@@ -19,6 +19,9 @@ import ikriti.natgeo.vo.MemberVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.collectivezen.util.mail.GoogleMail;
+import com.collectivezen.util.mail.MailConfig;
+import com.collectivezen.util.mail.MailContent;
 import com.trg.search.Search;
 
 public class RemoteMemberService extends BaseService
@@ -98,6 +101,16 @@ public class RemoteMemberService extends BaseService
 		
 		mapVO.setId(map.getId());
 		
+		String mailBody = "Hi "+ memberVO.getFirstname() +", <br /><br />";
+		mailBody += "We welcome your participation in the Mission Army Contest!<br />";
+		mailBody += "Thanks, <br />";
+		mailBody += "NatGeo India";
+		
+		MailContent mailContent = new MailContent("natgeo.feedback@gmail.com", memberVO.getEmail(), "NatGeo - Mission Army thanks your participation", mailBody);
+		MailConfig mailConfig = new MailConfig("smtp.gmail.com", "natgeo.feedback@gmail.com", "kalkik4lk1");
+		
+		GoogleMail.sendMail(mailContent, mailConfig);
+		
 		return mapVO;
 	}
 	
@@ -176,6 +189,7 @@ public class RemoteMemberService extends BaseService
 			fbUser.setMember(member);
 			fbUser.setFacebookId(fbUserVO.getFacebookId());
 			fbUser.setPhotoUrl(fbUserVO.getPhotoUrl());
+			fbUser.setCreateDate(new Date());
 			
 			fbUserService.save(fbUser);
 			
@@ -201,11 +215,6 @@ public class RemoteMemberService extends BaseService
 
 		return fbUserVO;
 	}
-	
-	
-	
-	
-	
 	
 	public FbUserVO testAssociateFB()
 	{
