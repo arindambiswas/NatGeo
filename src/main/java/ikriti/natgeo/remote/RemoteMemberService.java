@@ -102,11 +102,11 @@ public class RemoteMemberService extends BaseService
 		mapVO.setId(map.getId());
 		
 		String mailBody = "Hi "+ memberVO.getFirstname() +", <br /><br />";
-		mailBody += "We welcome your participation in the Mission Army Contest!<br />";
+		mailBody += "Thank you for participating in Idea Presents Nat Geo Mission Army. You have successfully registered. We will keep you informed about the next stage of the Mission shortly.<br />";
 		mailBody += "Thanks, <br />";
 		mailBody += "NatGeo India";
 		
-		MailContent mailContent = new MailContent("natgeo.feedback@gmail.com", memberVO.getEmail(), "NatGeo - Mission Army thanks your participation", mailBody);
+		MailContent mailContent = new MailContent("natgeo.feedback@gmail.com", memberVO.getEmail(), "Welcome to Idea Presents Nat Geo Mission Army!", mailBody);
 		MailConfig mailConfig = new MailConfig("smtp.gmail.com", "natgeo.feedback@gmail.com", "kalkik4lk1");
 		
 		GoogleMail.sendMail(mailContent, mailConfig);
