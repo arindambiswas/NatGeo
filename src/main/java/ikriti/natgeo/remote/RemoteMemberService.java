@@ -106,8 +106,8 @@ public class RemoteMemberService extends BaseService
 		mailBody += "Thanks, <br />";
 		mailBody += "NatGeo India";
 		
-		MailContent mailContent = new MailContent("natgeo.feedback@gmail.com", memberVO.getEmail(), "Welcome to Idea Presents Nat Geo Mission Army!", mailBody);
-		MailConfig mailConfig = new MailConfig("smtp.gmail.com", "natgeo.feedback@gmail.com", "kalkik4lk1");
+		MailContent mailContent = new MailContent("natgeomissionarmy@gmail.com", memberVO.getEmail(), "Welcome to Idea Presents Nat Geo Mission Army!", mailBody);
+		MailConfig mailConfig = new MailConfig("smtp.gmail.com", "natgeomissionarmy@gmail.com", "greatMigrations");
 		
 		GoogleMail.sendMail(mailContent, mailConfig);
 		
