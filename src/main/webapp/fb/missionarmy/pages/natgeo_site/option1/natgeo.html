@@ -18,6 +18,20 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
+  function sendToJavaScript(value) {
+      //document.forms["form1"].output.value += "ActionScript says: " + value + "\n";
+		 
+		 document.getElementById("webpageTwo").style.display = "block";
+		 document.getElementById("webpageOne").style.display = "none";
+		 
+  }
+
+  function imageClick()
+	 {
+		 window.location.href="http://apps.facebook.com/natgeoindia/";
+		 
+	 }
+
 </script>
 </head>
 <style>
@@ -37,20 +51,20 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
                 <div class="video_text" style="width:960px; height:380px;">
                     <div id="flashContent" class="video" style="width:500px; background-color:#690; height:340px; float:left; margin:20px 0px 20px 0px;>
                     	
-<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
-        WIDTH="500" HEIGHT="340" id="myMovieName">
-
-                <PARAM NAME="movie" VALUE="/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/missionArmy_webpageVideo.swf">
-                <PARAM NAME="quality" VALUE="high">
-                <PARAM NAME="allowScriptAccess" VALUE="always">
-
-                <EMBED src="/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/missionArmy_webpageVideo.swf"
-                                quality="high" WIDTH="500" HEIGHT="340" NAME="myMovieName"
-                                ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
-                                PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
-                </EMBED>
-</OBJECT>
+						<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+						        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
+						        WIDTH="500" HEIGHT="340" id="myMovieName">
+						
+						                <PARAM NAME="movie" VALUE="/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/missionArmy_webpageVideo.swf">
+						                <PARAM NAME="quality" VALUE="high">
+						                <PARAM NAME="allowScriptAccess" VALUE="always">
+						
+						                <EMBED src="/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/missionArmy_webpageVideo.swf"
+						                                quality="high" WIDTH="500" HEIGHT="340" NAME="myMovieName"
+						                                ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
+						                                PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+						                </EMBED>
+						</OBJECT>
                         
                     </div>
                     <div class="info" style="width:420px; height:340px; margin:20px 20px 20px 20px; float:left; text-align:justify; text-indent:0px; font-family:Verdana, Geneva, sans-serif; font-size:13px; color:#e2e2ae ">
@@ -66,101 +80,114 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
                     </div>
                 </div>
                 	<div class="sign_up" style="width:960px; height:450px;background-image:url(assets/signup_bg.png);background-repeat:no-repeat">
-                		
-                        <div style="width:960px;padding:10px 10px 0px 20px; color:#191B0E; font-family:Verdana, Geneva, sans-serif; font-size:18px; font-weight:bold" align="left">
-                        	To enter Mission Army, sign up here:
-                        </div>
-						<div id="likeBtn" style="width:960px;padding:10px 10px 10px 20px;" TEXT="#FFFFFF" align="left">
-                        	<div id="fb-root"></div>
-                        	<script type="text/javascript" src="swfobject/swfobject.js"></script>
-                        	<script type="text/javascript">
-							window.fbAsyncInit = function() 
-							{
-								FB.init({appId: '153610078014709', status: true, cookie: true, xfbml: true});
-								FB.Event.subscribe('edge.create', function(href, widget)
-																	{
-																 		//console.log('You just liked '+href+widget);
-																 		enableEntryForm();
-																 	});
-							};
-
-							(function() {
-						    	var e = document.createElement('script'); 
-						    	e.async = true;
-						    	e.src = document.location.protocol +
-						      		'//connect.facebook.net/en_US/all.js';
-						    	document.getElementById('fb-root').appendChild(e);
-						  	}());
-						  	
-							function getMovie(movieName)
-							{
-								if(navigator.appName.indexOf("Microsoft") != -1)
+                		<div id="webpageOne">
+	                        <div style="width:960px;padding:10px 10px 0px 20px; color:#191B0E; font-family:Verdana, Geneva, sans-serif; font-size:18px; font-weight:bold" align="left">
+	                        	To enter Mission Army, sign up here:
+	                        </div>
+							<div id="likeBtn" style="width:960px;padding:10px 10px 10px 20px;" TEXT="#FFFFFF" align="left">
+	                        	<div id="fb-root"></div>
+	                        	<script type="text/javascript" src="swfobject/swfobject.js"></script>
+	                        	<script type="text/javascript">
+								window.fbAsyncInit = function() 
 								{
-									return window[movieName];
-								}
-								else
+									FB.init({appId: '153610078014709', status: true, cookie: true, xfbml: true});
+									FB.Event.subscribe('edge.create', function(href, widget)
+																		{
+																	 		//console.log('You just liked '+href+widget);
+																	 		enableEntryForm();
+																	 	});
+								};
+	
+								(function() {
+							    	var e = document.createElement('script'); 
+							    	e.async = true;
+							    	e.src = document.location.protocol +
+							      		'//connect.facebook.net/en_US/all.js';
+							    	document.getElementById('fb-root').appendChild(e);
+							  	}());
+							  	
+								function getMovie(movieName)
 								{
-									return document[movieName];
+									if(navigator.appName.indexOf("Microsoft") != -1)
+									{
+										return window[movieName];
+									}
+									else
+									{
+										return document[movieName];
+									}
 								}
-							}
-							var jsReady = false;
-							function enableEntryForm()
-							{
-								if(jsReady)
-								getMovie("NatGeo_MissionArmy").enableEntryForm();
-									
-							}
-
-							function isReady() {
-						         return jsReady;
-						     }
-						     function pageInit() {
-						         jsReady = true;
-						     }
-
-
-
-							var flashvars = {
-		            				 graphAPIUrl: "https://graph.facebook.com/",
-		            				 fbPageId: "168747891415",
-		            				 fbRedirectUrl: "http://apptikka.com/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/callback.html",
-		            				 fbAppId: "153610078014709",
-		            				 fbSek: "4772b59f4bc07a941cf6b578c475a254"
-									};
-							var params = {
-							    allowScriptAccess: "sameDomain",
-								wmode: "transparent"
-							};
-							
-							var attributes = {
-							    id: "NatGeo_MissionArmy",
-							    name: "NatGeo_MissionArmy"
-							};
-///							flashvars = kalki.mixinQueryParams(flashvars);
-							
-							swfobject.embedSWF(
-								"MA_signup.swf", 
-								"MA_signup", 
-								"940", 
-								"300", 
-								"10.0.0.0",
-								"swfobject/expressInstall.swf",
-								flashvars,
-								params,
-								attributes);
-
-							
-							</script>
-							<fb:like href="http://www.facebook.com/natgeotv.india" layout="box_count" font="verdana" colorscheme="dark"></fb:like>
-<!--							<fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_11007063052" layout="box_count" font="verdana" colorscheme="dark"></fb:like>-->
-							<!-- <fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_11007063052" font="verdana"></fb:like>-->
-<!--							<fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_10442206389" colorscheme="dark" font="trebuchet ms"></fb:like>-->
-						</div>
-                		<div id="MA_signup">
+								var jsReady = false;
+								function enableEntryForm()
+								{
+									if(jsReady)
+									getMovie("NatGeo_MissionArmy").enableEntryForm();
+										
+								}
+	
+								function isReady() {
+							         return jsReady;
+							     }
+							     function pageInit() {
+							         jsReady = true;
+							     }
+	
+	
+	
+								var flashvars = {
+			            				 graphAPIUrl: "https://graph.facebook.com/",
+			            				 fbPageId: "168747891415",
+			            				 fbRedirectUrl: "http://apptikka.com/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/callback.html",
+			            				 fbAppId: "153610078014709",
+			            				 fbSek: "4772b59f4bc07a941cf6b578c475a254"
+										};
+								var params = {
+								    allowScriptAccess: "sameDomain",
+									wmode: "transparent"
+								};
+								
+								var attributes = {
+								    id: "NatGeo_MissionArmy",
+								    name: "NatGeo_MissionArmy"
+								};
+	///							flashvars = kalki.mixinQueryParams(flashvars);
+								
+								swfobject.embedSWF(
+									"MA_signup.swf", 
+									"MA_signup", 
+									"940", 
+									"300", 
+									"10.0.0.0",
+									"swfobject/expressInstall.swf",
+									flashvars,
+									params,
+									attributes);
+	
+								
+								</script>
+								<fb:like href="http://www.facebook.com/natgeotv.india" layout="box_count" font="verdana" colorscheme="dark"></fb:like>
+	<!--							<fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_11007063052" layout="box_count" font="verdana" colorscheme="dark"></fb:like>-->
+								<!-- <fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_11007063052" font="verdana"></fb:like>-->
+	<!--							<fb:like href="http://www.facebook.com/pages/RaviKichcha/154516747908559?v=app_10442206389" colorscheme="dark" font="trebuchet ms"></fb:like>-->
+							</div>
+	                		<div id="MA_signup">
+	                        </div>
+	                  		<div style="width:960px;height:auto;margin-top:-35px; margin-left:10px;" align="left">
+	                        	<a href="http://www.natgeotv.co.in/missionarmy/terms_conditions.htm" target="_blank"><h3 style="color:#CCCC99;font-size:12px;text-decoration:underline;font-family:Verdana, Geneva, sans-serif;">Terms and Conditions</h3></a>
+	                        </div>
                         </div>
-                  		<div style="width:960px;height:auto;margin-top:-35px; margin-left:10px;" align="left">
-                        	<a href="http://www.natgeotv.co.in/missionarmy/terms_conditions.htm" target="_blank"><h3 style="color:#CCCC99;font-size:12px;text-decoration:underline;font-family:Verdana, Geneva, sans-serif;">Terms and Conditions</h3></a>
-                        </div>
+                        <div align="center" id="webpageTwo" style="color:#CCCC99; display:none;margin:5px 10px 10px 0px;">
+					        <label style="font-family:Verdana, Geneva, sans-serif; font-weight:bold; font-size:15px; color:#000">
+					        THANK YOU FOR PARTICIPATING!
+					        </label>
+					        <br /><br />
+					        <label style="font-family:Verdana, Geneva, sans-serif; font-size:11px;" >
+					       Want To Know More About Idea Presents Nat Geo Mission Army? Click the image below!
+					        </label>
+					        <br />
+					        <br />
+					        <img src="assets/download.png" style="margin-top:10px; cursor:pointer;" onclick="imageClick();"/>
+				        </div> 
                 </div>
                 
            </div>     
