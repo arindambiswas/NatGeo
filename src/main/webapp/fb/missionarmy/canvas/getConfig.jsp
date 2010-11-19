@@ -14,7 +14,7 @@
 <!-- FOR ZEROGRAVITY -->
 
 	<appUrl>http://apptikka.com/natgeoindia/fb/missionarmy/canvas/MissionArmy.swf</appUrl>
-	<configUrl>http://apptikka.com/natgeoindia/fb/missionarmy/canvas/config.xml</configUrl>
+	<configUrl>http://apptikka.com/natgeoindia/fb/missionarmy/canvas/config/config.xml</configUrl>
 	<userId>1</userId>
 	
 <!-- FOR ZEROGRAVITY WITH LOCAL DEV  
