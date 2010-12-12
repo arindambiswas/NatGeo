@@ -79,16 +79,16 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
                     </div>
                     </div>
                 </div>
-                	<div class="sign_up" style="width:960px; height:450px;background-image:url(assets/signup_bg.png);background-repeat:no-repeat">
-                		<div id="webpageOne" style="display:none">
-	                        <div style="width:960px;padding:10px 10px 0px 20px; color:#191B0E; font-family:Verdana, Geneva, sans-serif; font-size:18px; font-weight:bold" align="left">
+                	<div class="sign_up" style="width:960px; height:460px;background-image:url(assets/signup_bg.png);background-repeat:no-repeat">
+                		<div id="webpageOne" style="display:block;text-align:center">
+	                        <!-- <div style="width:960px;padding:10px 10px 0px 20px; color:#191B0E; font-family:Verdana, Geneva, sans-serif; font-size:18px; font-weight:bold" align="left">
 	                        	To enter Mission Army, sign up here:
-	                        </div>
+	                        </div>-->
 							<div id="likeBtn" style="width:960px;padding:10px 10px 10px 20px;" TEXT="#FFFFFF" align="left">
 	                        	<div id="fb-root"></div>
 	                        	<script type="text/javascript" src="swfobject/swfobject.js"></script>
 	                        	<script type="text/javascript">
-								window.fbAsyncInit = function() 
+								/*window.fbAsyncInit = function() 
 								{
 									FB.init({appId: '153610078014709', status: true, cookie: true, xfbml: true});
 									FB.Event.subscribe('edge.create', function(href, widget)
@@ -134,13 +134,13 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
 							     }
 	
 	
-	
+								*/
 								var flashvars = {
 			            				 graphAPIUrl: "https://graph.facebook.com/",
-			            				 fbPageId: "168747891415",
+			            				 /*fbPageId: "168747891415",
 			            				 fbRedirectUrl: "http://apptikka.com/natgeoindia/fb/missionarmy/pages/natgeo_site/option1/callback.html",
 			            				 fbAppId: "153610078014709",
-			            				 fbSek: "4772b59f4bc07a941cf6b578c475a254"
+			            				 fbSek: "4772b59f4bc07a941cf6b578c475a254"*/
 										};
 								var params = {
 								    allowScriptAccess: "sameDomain",
@@ -148,16 +148,18 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
 								};
 								
 								var attributes = {
-								    id: "NatGeo_MissionArmy",
-								    name: "NatGeo_MissionArmy"
+								    /*id: "NatGeo_MissionArmy",
+								    name: "NatGeo_MissionArmy"*/
+										id: "FacebookOAuthGraphTest",
+									    name: "FacebookOAuthGraphTest"
 								};
 	///							flashvars = kalki.mixinQueryParams(flashvars);
 								
 								swfobject.embedSWF(
-									"MA_signup.swf", 
+									"http://apptikka.com/natgeoindia/fb/missionarmy/canvas/Container.swf", 
 									"MA_signup", 
-									"940", 
-									"300", 
+									"460", 
+									"460", 
 									"10.0.0.0",
 									"swfobject/expressInstall.swf",
 									flashvars,
@@ -173,9 +175,9 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
 							</div>
 	                		<div id="MA_signup">
 	                        </div>
-	                  		<div style="width:960px;height:auto;margin-top:-35px; margin-left:10px;" align="left">
+	                  		<!--<div style="width:960px;height:auto;margin-top:-35px; margin-left:10px;" align="left">
 	                        	<a href="http://www.natgeotv.co.in/missionarmy/terms_conditions.htm" target="_blank"><h3 style="color:#CCCC99;font-size:12px;text-decoration:underline;font-family:Verdana, Geneva, sans-serif;">Terms and Conditions</h3></a>
-	                        </div>
+	                        </div>-->
                         </div>
                         <div align="center" id="webpageTwo" style="color:#CCCC99; display:none;margin:5px 10px 10px 0px;">
                         	<br/>
@@ -192,7 +194,7 @@ likeBtn.like span.connect_widget_text a {color:#ffc6ff;}
 					        <a href="http://apps.facebook.com/natgeoindia/" target="_blank" style="color:#707C26"><img src="assets/download.png"/></a>
 					        
 				        </div> 
-				        <div id="entriesClosedContent" align="center" style="color:#CCCC99;display:block;text-align:center">
+				        <div id="entriesClosedContent" align="center" style="color:#CCCC99;display:none;text-align:center">
 				        	<label style="font-family:Verdana, Geneva, sans-serif; font-size:25px;" >
 					       Entries are closed... Thank You !
 					        </label>
